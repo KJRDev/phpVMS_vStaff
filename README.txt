@@ -2,7 +2,7 @@ Module Created By Vansers-Add-Ons (Vansers)
 This module is only use for phpVMS (www.phpvms.net) - (A Virtual Airline Admin Software)
 @Created By Vansers
 @Copyrighted @ 2013
-
+@Attribution-NonCommercial-ShareAlike 3.0 Unported
 
 Version 1.0 (April.20.13) - Module Created
 
