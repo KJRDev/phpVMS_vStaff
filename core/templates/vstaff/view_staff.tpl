@@ -45,7 +45,7 @@ MODULE LINKS TO ADD TO YOUR WEBSITE. THE ADMIN LINK IS ALREADY ADDED.
   </tr>
   <tr>
     <td><strong>Email:</strong></td>
-    <td><?php echo $staff->email;?></td>
+    <td><a href="mailto:<?php echo $staff->email;?>"><?php echo $staff->email;?></a></td>
   </tr>
    <tr>
     <td><strong>Staff Bio:</strong></td>
