@@ -175,5 +175,24 @@ class vStaffListData extends CodonData {
 		
 		return true;
 	}
+	
+	public static function GetOnlineStaff($minutes = '')
+	{
+		if($minutes == '')
+			$minutes = Config::Get('USERS_ONLINE_TIME');
+			
+		$sql = "SELECT a.*, p.*
+				FROM staff_members a, ".TABLE_PREFIX."sessions s
+				LEFT JOIN ".TABLE_PREFIX."pilots p ON p.pilotid=s.pilotid 
+				WHERE a.pilotid = s.pilotid
+				AND DATE_SUB(NOW(), INTERVAL {$minutes} MINUTE) <= s.logintime";
+				
+		$staff_online = DB::get_results($sql);
+        
+		if(!$staff_online)
+        	$staff_online = array();
+			
+		return $staff_online;
+	}
 
 }

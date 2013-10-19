@@ -48,4 +48,10 @@ class vStaff extends CodonModule
         $this->set('staff', vStaffListData::getStaff($id));
 		$this->render('vstaff/view_staff.tpl');
 	}
+	
+	public function show_online_staff($minutes = '')
+	{
+		$this->set('online_staff', vStaffListData::GetOnlineStaff($minutes));
+        $this->render('vstaff/online_staff.tpl');
+	}
 }
