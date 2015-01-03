@@ -27,7 +27,7 @@ class vStaff extends CodonModule
 	public function index()
 	{
 		$this->set('stafflevels', vStaffListData::GetAllStaffLevels());
-		$this->render('vstaff/index.tpl');
+		$this->render('vstaff/index.php');
 	}
 	
 	public function view($id = '')
@@ -35,23 +35,23 @@ class vStaff extends CodonModule
 		if($id == '')
 		{
 			$this->set('message', 'No Staff ID Entered!');
-			$this->render('core_error.tpl');
-			return false;	
+			$this->render('core_error.php');
+			return false;
 		}
 		elseif(!vStaffListData::getStaff($id))
 		{
 			$this->set('message', 'No Staff Such Exists!');
-			$this->render('core_error.tpl');
+			$this->render('core_error.php');
 			return false;
 		}
 		
         $this->set('staff', vStaffListData::getStaff($id));
-		$this->render('vstaff/view_staff.tpl');
+		$this->render('vstaff/view_staff.php');
 	}
 	
 	public function show_online_staff($minutes = '')
 	{
 		$this->set('online_staff', vStaffListData::GetOnlineStaff($minutes));
-        $this->render('vstaff/online_staff.tpl');
+        $this->render('vstaff/online_staff.php');
 	}
 }
