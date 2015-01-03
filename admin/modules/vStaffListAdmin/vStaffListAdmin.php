@@ -24,7 +24,7 @@ class vStaffListAdmin extends CodonModule
 {
 	public function HTMLHead()
 	{
-		$this->set('sidebar', 'vstaff/sidebar.tpl');
+		$this->set('sidebar', 'vstaff/sidebar.php');
 	}
 	
 	public function navbar()
@@ -70,10 +70,10 @@ class vStaffListAdmin extends CodonModule
 		
 		$this->set('pilots', PilotData::findPilots(array()));
 		$this->set('allcategories', vStaffListData::GetAllStaffLevels());
-		$this->render('vstaff/add_staff_bar.tpl');
-		$this->render('vstaff/add_staff_cat_bar.tpl');
+		$this->render('vstaff/add_staff_bar.php');
+		$this->render('vstaff/add_staff_cat_bar.php');
 		$this->set('stafflevels', vStaffListData::GetAllStaffLevels());
-		$this->render('vstaff/all_staff.tpl');
+		$this->render('vstaff/all_staff.php');
 	}
 	
 	public function editstaff($id)
@@ -81,7 +81,7 @@ class vStaffListAdmin extends CodonModule
 		$this->set('pilots', PilotData::findPilots(array()));
 		$this->set('allcategories', vStaffListData::GetAllStaffLevels());
 		$this->set('staff', vStaffListData::getStaff($id));
-		$this->render('vstaff/edit_staff.tpl');
+		$this->render('vstaff/edit_staff.php');
 	}
 	
 	public function deletestaff($id)
@@ -89,7 +89,7 @@ class vStaffListAdmin extends CodonModule
 		if($id == '')
 		{
 			$this->set('message', 'No ID Passed!');
-			$this->render('core_error.tpl');
+			$this->render('core_error.php');
 			return false;
 		}
 		$this->delete_staff_post($id);
@@ -114,7 +114,7 @@ class vStaffListAdmin extends CodonModule
 		if($this->post->pilotid == "" || $this->post->level_id == "" || $this->post->title == "" || $this->post->titleabr == "" || $this->post->email == "")
 		{
 			$this->set('message', 'Please enter everything out, Pilot, Staff Level, Title, Title Abr. & Email!');
-			$this->render('core_error.tpl');
+			$this->render('core_error.php');
 			return false;
 		}
 		
@@ -126,7 +126,7 @@ class vStaffListAdmin extends CodonModule
 		if($this->post->id == "" || $this->post->pilotid == "" || $this->post->level_id == "" || $this->post->title == "" || $this->post->titleabr == "" || $this->post->email == "")
 		{
 			$this->set('message', 'Please enter everything out, Pilot, Staff Level, Title, Title Abr. & Email!');
-			$this->render('core_error.tpl');
+			$this->render('core_error.php');
 			return false;
 		}
 		
@@ -197,7 +197,7 @@ class vStaffListAdmin extends CodonModule
 		if($id == '')
 		{
 			$this->set('message', 'Can not delete staff! - No Staff ID Passed!');
-			$this->render('core_error.tpl');
+			$this->render('core_error.php');
 			return false;	
 		}
 		
@@ -216,7 +216,7 @@ class vStaffListAdmin extends CodonModule
 		if($this->post->name == "")
 		{
 			$this->set('message', 'Please enter the category name!');
-			$this->render('core_error.tpl');
+			$this->render('core_error.php');
 			return false;
 		}
 		
@@ -228,7 +228,7 @@ class vStaffListAdmin extends CodonModule
 		if($this->post->name == "")
 		{
 			$this->set('message', 'Please enter the category name!');
-			$this->render('core_error.tpl');
+			$this->render('core_error.php');
 			return false;
 		}
 		
@@ -241,7 +241,7 @@ class vStaffListAdmin extends CodonModule
 		if($check)
 		{
 			$this->set('message', 'There are currently staff members under the category, you must remove them from the category before deleting the category!');
-			$this->render('core_error.tpl');
+			$this->render('core_error.php');
 			return false;
 		}
 		
