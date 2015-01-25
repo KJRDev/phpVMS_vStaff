@@ -143,34 +143,34 @@ class vStaffListAdmin extends CodonModule
 		}
 	}
 	
-	protected function upload_image_post($id, $_FILES)
+	protected function upload_image_post($id, $file)
 	{
 		if($id == '')
 		{
 			return false;	
 		}
-		
-		if ((($_FILES["uploadedfile"]["type"] == "image/x-png")
-            || ($_FILES["uploadedfile"]["type"] == "image/jpeg")
-			|| ($_FILES["uploadedfile"]["type"] == "image/png")
-            || ($_FILES["uploadedfile"]["type"] == "image/pjpeg")
-            || ($_FILES["uploadedfile"]["type"] == "image/gif"))
-            && ($_FILES["uploadedfile"]["size"] < 1048576))
+
+		if ((($file["uploadedfile"]["type"] == "image/x-png")
+            || ($file["uploadedfile"]["type"] == "image/jpeg")
+			|| ($file["uploadedfile"]["type"] == "image/png")
+            || ($file["uploadedfile"]["type"] == "image/pjpeg")
+            || ($file["uploadedfile"]["type"] == "image/gif"))
+            && ($file["uploadedfile"]["size"] < 1048576))
         {
 			
-			 if ($_FILES["file"]["error"] > 0) {
-                echo "Error: " . $_FILES["file"]["error"] . "<br />";
+			 if ($file["file"]["error"] > 0) {
+                echo "Error: " . $file["file"]["error"] . "<br />";
             }
 			//If uploading a different folder, .. = up one folder.
             $target_path = SITE_ROOT.'staff_photos/';
 
-            $_FILES['uploadedfile']['name'];
+            $file['uploadedfile']['name'];
 
-            $target_path = $target_path . basename( $_FILES['uploadedfile']['name']);
+            $target_path = $target_path . basename( $file['uploadedfile']['name']);
 
-            if(move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)) 
+            if(move_uploaded_file($file['uploadedfile']['tmp_name'], $target_path))
 			{
-				$file_name = $_FILES['uploadedfile']['name'];
+				$file_name = $file['uploadedfile']['name'];
 				vStaffListData::UploadPhoto($this->post->id, $file_name);
 			}
 			else {
