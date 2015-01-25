@@ -1,7 +1,7 @@
 <?php
 /*
 Module Created By Vansers-Add-Ons (Vansers)
-This module is only use for phpVMS (www.phpvms.net) - (A Virtual Airline Admin Software)
+This module is only use for phpVMS (www.tplvms.net) - (A Virtual Airline Admin Software)
 @Created By Vansers
 @Copyrighted @ 2013
 
@@ -27,7 +27,7 @@ class vStaff extends CodonModule
 	public function index()
 	{
 		$this->set('stafflevels', vStaffListData::GetAllStaffLevels());
-		$this->render('vstaff/index.php');
+		$this->render('vstaff/index.tpl');
 	}
 	
 	public function view($id = '')
@@ -35,23 +35,23 @@ class vStaff extends CodonModule
 		if($id == '')
 		{
 			$this->set('message', 'No Staff ID Entered!');
-			$this->render('core_error.php');
+			$this->render('core_error.tpl');
 			return false;
 		}
 		elseif(!vStaffListData::getStaff($id))
 		{
 			$this->set('message', 'No Staff Such Exists!');
-			$this->render('core_error.php');
+			$this->render('core_error.tpl');
 			return false;
 		}
 		
         $this->set('staff', vStaffListData::getStaff($id));
-		$this->render('vstaff/view_staff.php');
+		$this->render('vstaff/view_staff.tpl');
 	}
 	
 	public function show_online_staff($minutes = '')
 	{
 		$this->set('online_staff', vStaffListData::GetOnlineStaff($minutes));
-        $this->render('vstaff/online_staff.php');
+        $this->render('vstaff/online_staff.tpl');
 	}
 }
