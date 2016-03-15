@@ -31,7 +31,7 @@ class vStaffListAdmin extends CodonModule
 	{
 		if(PilotGroups::group_has_perm(Auth::$usergroups, FULL_ADMIN))
 		{
-		echo '<li><a href="'.SITE_URL.'/admin/index.tpl/vStaffListAdmin/">vStaffList Admin</a></li>';
+		echo '<li><a href="'.SITE_URL.'/admin/index.php/vStaffListAdmin/">vStaffList Admin</a></li>';
 		}
 	}
 	
